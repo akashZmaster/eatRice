@@ -30,8 +30,14 @@ dependencies {
     // 直接依赖
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.slf4j:slf4j-api:2.0.6'
+    implementation 'cn.hutool:hutool-all:5.8.14'
+    // 仅编译时
     compileOnly 'org.projectlombok:lombok'
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    // 仅运行时
     runtimeOnly 'com.mysql:mysql-connector-j'
+    // 注解处理器
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
