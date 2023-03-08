@@ -6,4 +6,5 @@ import org.slf4j.LoggerFactory;
 public class Insert extends Basic {
     private static final long serialVersionUID = 1L;
     private final Logger logger = LoggerFactory.getLogger(Insert.class);
+
 }

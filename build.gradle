@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.slf4j:slf4j-api:2.0.6'
     implementation 'cn.hutool:hutool-all:5.8.14'
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.24'
     // 仅编译时
     compileOnly 'org.projectlombok:lombok'
     compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
@@ -43,5 +44,5 @@ dependencies {
 }
 
 tasks.named('test') {
-//    useJUnitPlatform()
+    useJUnitPlatform()
 }

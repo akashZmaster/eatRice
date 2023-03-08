@@ -1,5 +1,6 @@
 package com.example.eatrice.common.entity;
 
+import cn.hutool.core.util.StrUtil;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.*;
@@ -58,7 +59,7 @@ public class BaseData extends HashMap implements Map {
     }
 
     public Integer getInter(Object key) {
-        return get(key) == null ? -1 : Integer.parseInt(get(key) + "");
+        return get(key) == null ? null : Integer.parseInt(get(key) + "");
     }
 
     public Double getDouble(Object key) {
@@ -67,6 +68,14 @@ public class BaseData extends HashMap implements Map {
 
     public String getString(Object key) {
         return get(key) == null ? "" : (String) get(key);
+    }
+
+    public boolean getBoolean(Object key) {
+        return get(key) == null ? false : (boolean) get(key);
+    }
+
+    public String getStringOrDefault(Object key, String defaultStr) {
+        return get(key) == null ? defaultStr : (String) get(key);
     }
 
     @SuppressWarnings("unchecked")
@@ -129,5 +138,25 @@ public class BaseData extends HashMap implements Map {
         return sb.toString();
     }
 
+
+    /**
+     * 简单PUT模式
+     * 支持一次调用往指定对象中写入多个键值
+     * TODO 需要保证键数组及值数组长度一致!
+     *
+     * @param keys   键数组
+     * @param values 值数组
+     * @return
+     */
+    public BaseData simplePut(String[] keys, Object... values) {
+        if (keys.length == values.length) {
+            for (int i = 0; i < keys.length; i++) {
+                if (!StrUtil.isEmptyIfStr(keys)) {
+                    this.put(keys[i], values[i]);
+                }
+            }
+        }
+        return this;
+    }
 
 }
